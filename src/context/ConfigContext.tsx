@@ -3,18 +3,41 @@ import { ConfigContextType } from '../types/config';
 
 const ConfigContext = createContext<ConfigContextType | undefined>(undefined);
 
+const STORAGE_KEYS = {
+  WEBHOOK_URL: 'quiz_webhook_url',
+  QUESTION_COUNT: 'quiz_question_count'
+} as const;
+
 export const ConfigProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [webhookUrl, setWebhookUrl] = useState<string>(() => {
-    const stored = localStorage.getItem('quiz_webhook_url');
-    return stored || 'https://hook.eu2.make.com/t7oez2zaywaq3pt5jhfgy3xil9q2fs0u';
+    const stored = localStorage.getItem(STORAGE_KEYS.WEBHOOK_URL);
+    return stored || '';
+  });
+
+  const [questionCount, setQuestionCount] = useState<number>(() => {
+    const stored = localStorage.getItem(STORAGE_KEYS.QUESTION_COUNT);
+    return stored ? parseInt(stored, 10) : 10;
   });
 
   useEffect(() => {
-    localStorage.setItem('quiz_webhook_url', webhookUrl);
+    if (webhookUrl) {
+      localStorage.setItem(STORAGE_KEYS.WEBHOOK_URL, webhookUrl);
+    } else {
+      localStorage.removeItem(STORAGE_KEYS.WEBHOOK_URL);
+    }
   }, [webhookUrl]);
 
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEYS.QUESTION_COUNT, questionCount.toString());
+  }, [questionCount]);
+
   return (
-    <ConfigContext.Provider value={{ webhookUrl, setWebhookUrl }}>
+    <ConfigContext.Provider value={{ 
+      webhookUrl, 
+      setWebhookUrl,
+      questionCount,
+      setQuestionCount
+    }}>
       {children}
     </ConfigContext.Provider>
   );

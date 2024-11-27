@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { HelpCircle, X } from 'lucide-react';
+import { HelpCircle, X, Check, AlertCircle } from 'lucide-react';
 import { useConfig } from '../context/ConfigContext';
 import { isValidUrl } from '../utils/validation';
+import { isWebhookConfigured } from '../utils/urlMasking';
 
 interface ConfigModalProps {
   isOpen: boolean;
@@ -10,7 +11,7 @@ interface ConfigModalProps {
 
 export const ConfigModal: React.FC<ConfigModalProps> = ({ isOpen, onClose }) => {
   const { webhookUrl, setWebhookUrl } = useConfig();
-  const [inputUrl, setInputUrl] = useState(webhookUrl);
+  const [inputUrl, setInputUrl] = useState('');
   const [error, setError] = useState<string>('');
   const [success, setSuccess] = useState(false);
 
@@ -21,13 +22,14 @@ export const ConfigModal: React.FC<ConfigModalProps> = ({ isOpen, onClose }) => 
     setError('');
     setSuccess(false);
 
-    if (!isValidUrl(inputUrl)) {
+    if (inputUrl && !isValidUrl(inputUrl)) {
       setError('Please enter a valid HTTPS URL');
       return;
     }
 
     setWebhookUrl(inputUrl);
     setSuccess(true);
+    setInputUrl('');
     setTimeout(() => {
       onClose();
       setSuccess(false);
@@ -47,6 +49,22 @@ export const ConfigModal: React.FC<ConfigModalProps> = ({ isOpen, onClose }) => 
           </button>
         </div>
 
+        <div className="mb-4">
+          <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg">
+            {isWebhookConfigured(webhookUrl) ? (
+              <>
+                <Check className="w-5 h-5 text-green-500" />
+                <span className="text-sm text-gray-600">Webhook configured</span>
+              </>
+            ) : (
+              <>
+                <AlertCircle className="w-5 h-5 text-yellow-500" />
+                <span className="text-sm text-gray-600">Using sample questions</span>
+              </>
+            )}
+          </div>
+        </div>
+
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -54,7 +72,7 @@ export const ConfigModal: React.FC<ConfigModalProps> = ({ isOpen, onClose }) => 
               <div className="inline-block ml-2 group relative">
                 <HelpCircle className="w-4 h-4 text-gray-400 inline" />
                 <div className="hidden group-hover:block absolute left-0 transform -translate-x-1/2 bottom-6 w-64 px-4 py-2 bg-gray-900 text-white text-sm rounded-lg">
-                  A webhook URL is an endpoint that receives quiz questions. It should be a secure HTTPS URL that returns questions in the required format.
+                  A webhook URL is an endpoint that receives quiz questions. Leave empty to use sample questions.
                 </div>
               </div>
             </label>
@@ -64,7 +82,8 @@ export const ConfigModal: React.FC<ConfigModalProps> = ({ isOpen, onClose }) => 
               onChange={(e) => setInputUrl(e.target.value)}
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm
                        border p-2"
-              placeholder="https://your-webhook-url.com"
+              placeholder="https://your-webhook-url.com (optional)"
+              autoComplete="off"
             />
             {error && (
               <p className="mt-2 text-sm text-red-600">{error}</p>
@@ -88,7 +107,8 @@ export const ConfigModal: React.FC<ConfigModalProps> = ({ isOpen, onClose }) => 
           </div>
 
           {success && (
-            <div className="mt-2 text-sm text-green-600">
+            <div className="mt-2 text-sm text-green-600 flex items-center gap-2">
+              <Check className="w-4 h-4" />
               Configuration saved successfully!
             </div>
           )}

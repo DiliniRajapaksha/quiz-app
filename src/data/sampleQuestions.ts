@@ -10,10 +10,6 @@ export const sampleQuestions: QuizItem[] = [
     "answer": "salmon"
   },
   {
-    "question": "Our teacher gave us a brochure about the school trip to the museum.",
-    "answer": "brochure"
-  },
-  {
     "question": "The mountaneer reached the summit after a difficult climb.",
     "answer": "mountaineer"
   },
