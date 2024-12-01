@@ -3,6 +3,7 @@ import { QuizItem } from '../types/quiz';
 import { useConfig } from '../context/ConfigContext';
 import { sampleQuestions } from '../data/sampleQuestions';
 import { isValidUrl } from '../utils/validation';
+import { clearProgress } from '../utils/storage';
 
 export const useQuizData = () => {
   const { webhookUrl, questionCount } = useConfig();
@@ -15,6 +16,7 @@ export const useQuizData = () => {
     setIsLoading(true);
     setError(null);
     setIsUsingFallback(false);
+    clearProgress(); // Clear previous progress when fetching new questions
 
     // If no webhook URL is set or it's invalid, use sample questions
     if (!webhookUrl || !isValidUrl(webhookUrl)) {

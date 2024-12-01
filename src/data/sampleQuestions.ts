@@ -2,6 +2,210 @@ import { QuizItem } from '../types/quiz';
 
 export const sampleQuestions: QuizItem[] = [
   {
+    "question": "The weelbarrow was left in the garden after the gardener finished his work.",
+    "answer": "wheelbarrow"
+  },
+  {
+    "question": "I always buy fresh sammon from the local market for dinner.",
+    "answer": "salmon"
+  },
+  {
+    "question": "The mountaneer reached the summit after a difficult climb.",
+    "answer": "mountaineer"
+  },
+  {
+    "question": "The lifegards were watching the beach closely to keep everyone safe.",
+    "answer": "lifeguards"
+  },
+  {
+    "question": "The cruntchy leaves were scattered all over the garden.",
+    "answer": "crunchy"
+  },
+  {
+    "question": "He was offerring his assistance to the elderly lady.",
+    "answer": "offering"
+  },
+  {
+    "question": "The dog's coller was bright red.",
+    "answer": "collar"
+  },
+  {
+    "question": "The rabbits made their homes in burros under the tree.",
+    "answer": "burrows"
+  },
+  {
+    "question": "The perfume attrax bees to the flowers.",
+    "answer": "attracts"
+  },
+  {
+    "question": "The company is hiring new recroots to expand its workforce.",
+    "answer": "recruits"
+  },
+  {
+    "question": "Tourist broshures were available at the reception desk.",
+    "answer": "brochures"
+  },
+  {
+    "question": "She couldn't posible have known the outcome.",
+    "answer": "possibly"
+  },
+  {
+    "question": "This is the funnyest joke I've ever heard.",
+    "answer": "funniest"
+  },
+  {
+    "question": "The teacher asked us to meshure the length of the table.",
+    "answer": "measure"
+  },
+  {
+    "question": "The team decided to procead with their original plan.",
+    "answer": "proceed"
+  },
+  {
+    "question": "The patience in the waiting room were anxious.",
+    "answer": "patients"
+  },
+  {
+    "question": "The outrayjus behavior of the crowd was shocking.",
+    "answer": "outrageous"
+  },
+  {
+    "question": "The moon was eclipst by the shadow of the Earth.",
+    "answer": "eclipsed"
+  },
+  {
+    "question": "He ensured the adequett safety measures were in place.",
+    "answer": "adequate"
+  },
+  {
+    "question": "The locle shop was closed on Sundays.",
+    "answer": "local"
+  },
+  {
+    "question": "The house was damadged by the storm.",
+    "answer": "damaged"
+  },
+  {
+    "question": "We disscussed the topic thoroughly before making a decision.",
+    "answer": "discussed"
+  },
+  {
+    "question": "The cristal vase shattered when it fell.",
+    "answer": "crystal"
+  },
+  {
+    "question": "The instrament was carefully placed back in its case.",
+    "answer": "instrument"
+  },
+  {
+    "question": "The evaluasion of the results took hours.",
+    "answer": "evaluation"
+  },
+  {
+    "question": "The valuble necklace was kept in a safe place.",
+    "answer": "valuable"
+  },
+  {
+    "question": "The water began to evaperate under the sun.",
+    "answer": "evaporate"
+  },
+  {
+    "question": "The fish in the acquatic center were colorful.",
+    "answer": "aquatic"
+  },
+  {
+    "question": "The successfull completion of the project was celebrated.",
+    "answer": "successful"
+  },
+  {
+    "question": "He drasticly reduced his expenses to save money.",
+    "answer": "drastically"
+  },
+  {
+    "question": "The product comes with a garentee of quality.",
+    "answer": "guarantee"
+  },
+  {
+    "question": "The twelth day of Christmas is the final celebration.",
+    "answer": "twelfth"
+  },
+  {
+    "question": "She sampel the soup before serving it.",
+    "answer": "sample"
+  },
+  {
+    "question": "He bought ekstra batteries for the remote.",
+    "answer": "extra"
+  },
+  {
+    "question": "The child was anoyed by the loud noise.",
+    "answer": "annoyed"
+  },
+  {
+    "question": "The thumnail of the video caught my attention.",
+    "answer": "thumbnail"
+  },
+  {
+    "question": "That was the werst movie I've ever seen.",
+    "answer": "worst"
+  },
+  {
+    "question": "The system was relyable even under pressure.",
+    "answer": "reliable"
+  },
+  {
+    "question": "The cachment area includes several rivers.",
+    "answer": "catchment"
+  },
+  {
+    "question": "Their designs were quite similer to ours.",
+    "answer": "similar"
+  },
+  {
+    "question": "The perimetre of the park is three kilometers.",
+    "answer": "perimeter"
+  },
+  {
+    "question": "The growceries were neatly packed in bags.",
+    "answer": "groceries"
+  },
+  {
+    "question": "She fulfilled her responsabilities at work.",
+    "answer": "responsibilities"
+  },
+  {
+    "question": "The canion was deep and narrow.",
+    "answer": "canyon"
+  },
+  {
+    "question": "The noise was almost defening during the concert.",
+    "answer": "deafening"
+  },
+  {
+    "question": "Parents nurchure their children with care.",
+    "answer": "nurture"
+  },
+  {
+    "question": "The abreviation 'etc.' is commonly used.",
+    "answer": "abbreviation"
+  },
+  {
+    "question": "He had to forfet his rights to the property.",
+    "answer": "forfeit"
+  },
+  {
+    "question": "The garbege truck passed by in the morning.",
+    "answer": "garbage"
+  },
+  {
+    "question": "I will acompany you to the event.",
+    "answer": "accompany"
+  },
+  {
+    "question": "The avrage temperature this week was quite high.",
+    "answer": "average"
+  },
+  {
     "question": "The teacher asked the students to aksept the new classroom rules.",
     "answer": "accept"
   },
@@ -202,4 +406,5 @@ export const sampleQuestions: QuizItem[] = [
     "answer": "honeycomb"
   }
 ]
+
 ;

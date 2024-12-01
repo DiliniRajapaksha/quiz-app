@@ -1,13 +1,18 @@
 import React from 'react';
 import { QuizResult } from '../types/quiz';
-import { CheckCircle, XCircle } from 'lucide-react';
+import { CheckCircle, XCircle, RotateCcw, Shuffle } from 'lucide-react';
 
 interface ResultsSummaryProps {
   results: QuizResult[];
   onRestartQuiz: () => void;
+  onNewQuiz: () => void;
 }
 
-export const ResultsSummary: React.FC<ResultsSummaryProps> = ({ results, onRestartQuiz }) => {
+export const ResultsSummary: React.FC<ResultsSummaryProps> = ({ 
+  results, 
+  onRestartQuiz,
+  onNewQuiz 
+}) => {
   const correctAnswers = results.filter(result => result.isCorrect).length;
   const totalQuestions = results.length;
   const percentage = Math.round((correctAnswers / totalQuestions) * 100);
@@ -65,15 +70,29 @@ export const ResultsSummary: React.FC<ResultsSummaryProps> = ({ results, onResta
         ))}
       </div>
 
-      {/* Restart Button */}
-      <button
-        onClick={onRestartQuiz}
-        className="w-full mt-6 px-6 py-2 bg-blue-600 text-white rounded-lg
-                 hover:bg-blue-700 focus:outline-none focus:ring-2 
-                 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
-      >
-        Try Again
-      </button>
+      {/* Action Buttons */}
+      <div className="flex gap-4 mt-6">
+        <button
+          onClick={onRestartQuiz}
+          className="flex-1 px-6 py-2 bg-blue-600 text-white rounded-lg
+                   hover:bg-blue-700 focus:outline-none focus:ring-2 
+                   focus:ring-blue-500 focus:ring-offset-2 transition-colors
+                   flex items-center justify-center gap-2"
+        >
+          <RotateCcw className="w-5 h-5" />
+          Try Again
+        </button>
+        <button
+          onClick={onNewQuiz}
+          className="flex-1 px-6 py-2 bg-green-600 text-white rounded-lg
+                   hover:bg-green-700 focus:outline-none focus:ring-2 
+                   focus:ring-green-500 focus:ring-offset-2 transition-colors
+                   flex items-center justify-center gap-2"
+        >
+          <Shuffle className="w-5 h-5" />
+          New Quiz
+        </button>
+      </div>
     </div>
   );
 };

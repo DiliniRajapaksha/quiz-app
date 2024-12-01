@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Quiz } from './components/Quiz';
 import { StartScreen } from './components/StartScreen';
 import { ConfigButton } from './components/ConfigButton';
+import { CheckProgressButton } from './components/CheckProgressButton';
 import { ConfigProvider } from './context/ConfigContext';
 import { useQuizData } from './hooks/useQuizData';
 
@@ -12,6 +13,12 @@ function AppContent() {
   const handleStart = async () => {
     await fetchQuestions();
     setQuizStarted(true);
+  };
+
+  const handleNewQuiz = async () => {
+    setQuizStarted(false); // Reset quiz started state
+    await fetchQuestions(); // Fetch new questions
+    setQuizStarted(true); // Start new quiz
   };
 
   return (
@@ -26,8 +33,13 @@ function AppContent() {
             isUsingFallback={isUsingFallback}
           />
         ) : (
-          <Quiz questions={questions} />
+          <Quiz 
+            key={Date.now()} // Add key to force component remount
+            questions={questions}
+            onNewQuiz={handleNewQuiz}
+          />
         )}
+        <CheckProgressButton />
       </div>
     </div>
   );
